@@ -14,10 +14,11 @@ public class PostsNumberCheckTest extends BaseTests {
             .enterTextInTheSearchBox(searchWord)
             .selectFirstElementInTheTreeResults()
             .selectCalenderIcon()
-            .clickOnDecrementYearsArrow(1)
             .selectMonth(String.valueOf(Months.January))
+            .clickOnDecrementYearsArrow(1)
             .selectFirstDayInTheCalender()
             .getNumberOfPosts();
+
         Assert.assertEquals(actualNumberOfPosts,expectedNumberOfPosts);
     }
 }

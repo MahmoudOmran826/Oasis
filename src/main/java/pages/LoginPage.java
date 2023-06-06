@@ -24,6 +24,10 @@ private WebDriverWait wait;
     private By userName =By.name("it1");
     private By password =By.name("it2");
     private By loginBtn =By.id("login");
+    private By popupWindow =By.cssSelector("#j_id7 .x1dk");
+    private By yesBtnForPopupWindow =By.id("j_id7_yes");
+
+
 
 //    Methods
     public LoginPage enterUserName(String userNameString){
@@ -42,6 +46,10 @@ private WebDriverWait wait;
     public HomePage clickLoginBtn(){
         wait.until(ExpectedConditions.elementToBeClickable(loginBtn));
         driver.findElement(loginBtn).click();
+        if (!(driver.findElements(popupWindow).isEmpty())){
+            wait.until(ExpectedConditions.elementToBeClickable(yesBtnForPopupWindow));
+            driver.findElement(yesBtnForPopupWindow).click();
+        }
         return new HomePage(driver);
     }
 }
